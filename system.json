@@ -1,0 +1,47 @@
+{
+  "id": "hkrpg",
+  "title": "The Unofficial Hollow Knight RPG",
+  "description": "The Unofficial Hollow Knight RPG system for FoundryVTT. Work in progress.",
+  "version": "0.1",
+  "compatibility": {
+    "minimum": 12,
+    "verified": "12 build 330"
+  },
+  "authors": [{"name": "Boba"}],
+  "esmodules": ["hkrpg.mjs"],
+  "documentTypes": {
+  "Actor": {
+    "Bug": {}
+  },
+  "Item": {
+    "Weapon": {},
+    "Shield": {},
+    "ArcaneFoci": {},
+    "Armor": {},
+    "Food": {},
+    "Potion": {},
+    "Flask": {},
+    "Poison": {},
+    "Trap": {},
+    "Tool": {},
+    "Other": {},
+    "Charm": {},
+    "Trait": {},
+    "Proficiency": {},
+    "Path": {},
+    "Arcana": {},
+    "Art": {}
+  }
+  },
+  "styles": ["css/hkrpgStyle.css"],
+  "grid": {
+    "distance": 1,
+    "units": "square"
+  },
+  "languages": [
+  {
+    "lang": "en",
+    "name": "English",
+    "path": "languages/en.json"
+  }]
+}

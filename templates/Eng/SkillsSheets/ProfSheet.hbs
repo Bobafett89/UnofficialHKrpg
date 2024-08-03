@@ -1,0 +1,50 @@
+<form class="flexcol" autocomplete="off">
+    <header style="display: grid; grid-template-rows: 100px 100px 200px; row-gap: 10px;">
+        <div class="hkFlex" style="column-gap: 5px; align-items: center;">
+            <img src="{{item.img}}" data-edit="img" height="100px" width="100px" style="object-fit: contain;"/>
+            <input class="noBord" type="text" name="name" value="{{item.name}}" style="max-width: 300px;"/>
+        </div>
+
+        <div class="hkFlex" style="column-gap: 15px;">
+
+            <div style="display: grid; justify-items: center;">
+                <span>Rank</span>
+                <input type="text" name="system.Rank" value="{{item.system.Rank}}" style="max-width: 40px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <div class="hkFlex" style="column-gap: 5px;">
+                    <span style="text-wrap: nowrap;">Skill 1</span>
+                    <input type="checkbox" name="system.Skill1.mastery" style="width: 18px; height: 18px; margin: 0;" {{#if item.system.Skill1.mastery}}checked{{/if}}/>
+                </div>
+                <input type="text" name="system.Skill1.name" value="{{item.system.Skill1.name}}" style="max-width: 150px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <div class="hkFlex" style="column-gap: 5px;">
+                    <span style="text-wrap: nowrap;">Skill 2</span>
+                    <input type="checkbox" name="system.Skill2.mastery" style="width: 18px; height: 18px; margin: 0;" {{#if item.system.Skill2.mastery}}checked{{/if}}/>
+                </div>
+                <input type="text" name="system.Skill2.name" value="{{item.system.Skill2.name}}" style="max-width: 150px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <div class="hkFlex" style="column-gap: 5px;">
+                    <span style="text-wrap: nowrap;">Skill 3</span>
+                    <input type="checkbox" name="system.Skill3.mastery" style="width: 18px; height: 18px; margin: 0;" {{#if item.system.Skill3.mastery}}checked{{/if}}/>
+                </div>
+                <input type="text" name="system.Skill3.name" value="{{item.system.Skill3.name}}" style="max-width: 150px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <div class="hkFlex" style="column-gap: 5px;">
+                    <span style="text-wrap: nowrap;">Skill 4</span>
+                    <input type="checkbox" name="system.Skill4.mastery" style="width: 18px; height: 18px; margin: 0;" {{#if item.system.Skill4.mastery}}checked{{/if}}/>
+                </div>
+                <input type="text" name="system.Skill4.name" value="{{item.system.Skill4.name}}" style="max-width: 150px;"/>
+            </div>
+        </div>
+
+        <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="Enter description here...">{{item.system.Description}}</textarea>
+    </header>
+</form>

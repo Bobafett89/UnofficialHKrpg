@@ -1,0 +1,326 @@
+@font-face {
+    font-family: Lora;
+    src: url(Lora.ttf);
+}
+div.sheet {
+    font-family: Lora;
+    font-weight: 500;
+}
+div.dialog {
+    font-family: Lora;
+    font-weight: 500;
+}
+div.sheet .test {
+    font-size: 1px;
+}
+
+
+
+
+.bord {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+}
+.hkFlex {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.hkTabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    border-left: 0;
+    border-right: 0;
+}
+.desc {
+    resize: none;
+    min-width: 250px;
+    height: 250px;
+}
+
+
+
+
+.EquipmentTab  {
+    display: grid !important;
+    grid-template: "a b" min-content
+                   "c c" min-content
+                   "d d" min-content / min-content min-content;
+    column-gap: 50px;
+    row-gap: 15px;
+}
+.WeaponList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.WeaponListGrid {
+    display: grid;
+    grid-template-columns: 150px 63px 58px 50px 39px 35px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.ArmorList {
+    display: grid;
+    border: 2px solid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.ArmorListGrid {
+    display: grid;
+    grid-template-columns: 150px 63px 110px 72px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.EquipmentList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.EquipmentListGrid {
+    display: grid;
+    grid-template-columns: 150px 63px 64px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.CharmList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.CharmListGrid {
+    display: grid;
+    grid-template-columns: 150px 63px 64px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.SkillsTab {
+    display: grid !important;
+    grid-template: "a b" min-content
+                   "a b" min-content
+                   "c c" min-content / min-content min-content;
+    column-gap: 50px;
+    row-gap: 15px;
+}
+.TraitList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.TraitListGrid {
+    display: grid;
+    grid-template-columns: 150px 59px 41px 50px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.ProfList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.ProfListGridHead {
+    display: grid;
+    grid-template-columns: 150px 64px 86px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.ProfListGridProf {
+    display: grid;
+    grid-template-columns: 150px 64px 86px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.ProfListGridSkill {
+    display: grid;
+    grid-template-columns: 214px 86px;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.PathList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.PathListGrid {
+    display: grid;
+    grid-template-columns: 150px 80px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.ArtList {
+    display: grid;
+    width: min-content;
+    grid-auto-rows: minmax(25px, auto);
+    border: 2px solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.ArtListGrid {
+    display: grid;
+    grid-template-columns: 150px 80px auto;
+    grid-template-rows: 25px;
+    align-items: center;
+    justify-items: center;
+}
+.UpListHeader {
+    background-color: #646464;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #646464;
+}
+.DownListHeader {
+    background-color: #646464;
+    color: white;
+    border-bottom: 1px solid #646464;
+}
+.ItemListItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #969696;
+    border-right: 2px dotted #969696;
+}
+.hkOpenSheet:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px black;
+}
+.hkUse:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px black;
+}
+.hkItemDelete:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px black;
+}
+
+
+
+
+.attrBox{
+    display: grid;
+    height: 50px;
+    column-gap: 0px;
+    justify-content: start;
+    grid-template-columns: 66.5px 66.5px;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 7px;
+}
+.attrBoxName{
+    font-size: 20px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border: 1px solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+.attrBox1{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.attrBox2{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.rollable:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px black;
+}
+.poolsBoxes{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+
+
+
+div.sheet form {
+    background: white;
+}
+div.sheet section.window-content{
+    background: white;
+    color: black;
+}
+div.dialog form {
+    background-color: white;
+}
+div.dialog section.window-content{
+    background: white;
+    color: black;
+}
+div.dialog input[type="text"] {
+    border-radius: 0px;
+    background-color: #f0f0f0;
+    color: black;
+    font-weight: 500;
+}
+div.sheet input[type="text"] {
+    border-radius: 0px;
+    border: 1px solid;
+    background-color: #f0f0f0;
+    color: black;
+    font-weight: 500;
+}
+div.sheet input[type="text"].noBord {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+div.sheet input[type="text"].noTBord{
+    border-top-width: 0px;
+}
+div.sheet input[type="text"].noBBord{
+    border-bottom-width: 0px;
+}
+div.sheet input[type="text"].noRBord{
+    border-right-width: 0px;
+}
+div.sheet input[type="text"].noLBord{
+    border-left-width: 0px;
+}

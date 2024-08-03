@@ -1,0 +1,40 @@
+<form class="flexcol" autocomplete="off">
+    <header style="display: grid; grid-template-rows: 100px 100px 200px; row-gap: 10px;">
+        <div class="hkFlex" style="column-gap: 5px; align-items: center;">
+            <img src="{{item.img}}" data-edit="img" height="100px" width="100px" style="object-fit: contain;"/>
+            <input class="noBord" type="text" name="name" value="{{item.name}}" style="max-width: 300px;"/>
+        </div>
+
+        <div class="hkFlex" style="column-gap: 15px;">
+            <div style="display: grid; justify-items: center; min-width: 124px;">
+                <span>Damage Reduction</span>
+                <input type="text" name="system.DamageReduction" value="{{item.system.DamageReduction}}" style="max-width: 40px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <span>Durability</span>
+                <div class="hkFlex">
+                    <input class="noRBord" type="text" name="system.Durability.max" value="{{item.system.Durability.max}}" style="max-width: 23px; min-width: 23px; height: 23px;"/>
+                    <input type="text" name="system.Durability.value" value="{{item.system.Durability.value}}" style="max-width: 35px; min-width: 35px; height: 35px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <span>Modifier</span>
+                <input type="text" name="system.Modifier" value="{{item.system.Modifier}}" style="max-width: 75px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <span>Bulk</span>
+                <input type="text" name="system.Bulk" value="{{item.system.Bulk}}" style="max-width: 40px;"/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <span>Cost</span>
+                <input type="text" name="system.Cost" value="{{item.system.Cost}}" style="max-width: 40px;"/>
+            </div>
+        </div>
+
+        <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="Enter description here...">{{item.system.Description}}</textarea>
+    </header>
+</form>

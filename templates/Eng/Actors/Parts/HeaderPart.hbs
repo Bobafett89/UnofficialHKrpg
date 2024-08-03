@@ -1,0 +1,152 @@
+<div class="hkFlex" style="column-gap: 5px; align-items: center;">
+    <div class="hkFlex" style="width: 42%; column-gap: 14px; min-width: 236px; max-width: 270px">
+        <span style="font-size: 20px;">Name</span>
+        <input class="noBord" type="text" name="name" value="{{actor.name}}" placeholder="Character name"/>
+    </div>
+
+    <div style="width: 59px; display: grid; justify-items: center;">
+        <span style="font-size: 13px;">Milestone</span>
+        <input type="text" name="system.Other.Milestone.main" value="{{actor.system.Other.Milestone.main}}" style="width: 35px;"/>
+        <input class="noTBord" type="text" name="system.Other.Milestone.minorAdv" value="{{actor.system.Other.Milestone.minorAdv}}" style="width: 28px;"/>
+    </div>
+
+    <div style="width: 49px; height: 74px; display: grid; justify-items: center;">
+        <span style="font-size: 13px;">Size</span>
+        <img src="systems/hkrpg/assets/trapez.png" height="55px" width="40px" style="object-fit: contain; border: none; max-width: 40px;"/>
+        <div style="display: grid; row-gap: 5px; position: relative; bottom: 54px; right: 2px;">
+            <input type="radio" name="system.OtherAttr.Size" value="1" {{#if (EqualityCheck actor.system.OtherAttr.Size 1)}}checked{{/if}}/>
+            <input type="radio" name="system.OtherAttr.Size" value="2" {{#if (EqualityCheck actor.system.OtherAttr.Size 2)}}checked{{/if}}/>
+            <input type="radio" name="system.OtherAttr.Size" value="3" {{#if (EqualityCheck actor.system.OtherAttr.Size 3)}}checked{{/if}}/>
+        </div>
+    </div>
+
+    <div class="hkFlex" style="width: 42%; column-gap: 14px; min-width: 236px; max-width: 270px">
+        <span style="font-size: 20px;">Player</span>
+        <input class="noBord" type="text" name="system.Other.PlayerName" value="{{actor.system.Other.PlayerName}}" placeholder="Player name"/>
+    </div>
+</div>
+
+<div class="hkFlex">
+    <div style="display: grid; width: 200px;">
+        <span style="font-size: 13px;">Character art</span>
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200" style="object-fit: contain;"/>
+    </div>
+
+    <div style="display: grid; width: 140px; row-gap: 7px; margin-left: 14px;">
+        <div class="attrBox">
+            <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Might.value}}" data-mod="{{actor.system.Attr.Might.temporary}}">Might</span>
+            <input type="text" name="system.Attr.Might.value" value="{{actor.system.Attr.Might.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" name="system.Attr.Might.temporary" value="{{actor.system.Attr.Might.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
+        </div>
+    
+        <div class="attrBox">
+            <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Insight.value}}" data-mod="{{actor.system.Attr.Insight.temporary}}">Insight</span>
+            <input type="text" name="system.Attr.Insight.value" value="{{actor.system.Attr.Insight.value}}" class="attrBox1" style="width: 35px"/>
+            <input type="text" name="system.Attr.Insight.temporary" value="{{actor.system.Attr.Insight.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
+        </div>
+    
+        <div class="attrBox">
+            <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Shell.value}}" data-mod="{{actor.system.Attr.Shell.temporary}}">Shell</span>
+            <input type="text" name="system.Attr.Shell.value" value="{{actor.system.Attr.Shell.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" name="system.Attr.Shell.temporary" value="{{actor.system.Attr.Shell.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
+        </div>
+    
+        <div class="attrBox">
+            <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Grace.value}}" data-mod="{{actor.system.Attr.Grace.temporary}}">Grace</span>
+            <input type="text" name="system.Attr.Grace.value" value="{{actor.system.Attr.Grace.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" name="system.Attr.Grace.temporary" value="{{actor.system.Attr.Grace.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
+        </div>
+    </div>
+
+    <div style="display: grid; row-gap: 7px;">
+        <div class="poolsBoxes">
+            <div style="display: grid;">
+                <span style="font-size: 20px; justify-self: center;">Hearts</span>
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.Hearts.max" value="{{actor.system.Pools.Hearts.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.Hearts.value" value="{{actor.system.Pools.Hearts.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.Hearts.temporary" value="{{actor.system.Pools.Hearts.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 20px; justify-self: center;">Soul</span>
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.Soul.max" value="{{actor.system.Pools.Soul.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.Soul.value" value="{{actor.system.Pools.Soul.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.Soul.temporary" value="{{actor.system.Pools.Soul.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 20px; justify-self: center;">Stamina</span>
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.Stamina.max" value="{{actor.system.Pools.Stamina.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.Stamina.value" value="{{actor.system.Pools.Stamina.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.Stamina.temporary" value="{{actor.system.Pools.Stamina.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid; row-gap: 4px;">
+                <input type="text" name="system.Pools.CustomPool1.name" value="{{actor.system.Pools.CustomPool1.name}}" class="noBord" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.CustomPool1.max" value="{{actor.system.Pools.CustomPool1.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.CustomPool1.value" value="{{actor.system.Pools.CustomPool1.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.CustomPool1.temporary" value="{{actor.system.Pools.CustomPool1.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid; row-gap: 4px;">
+                <input type="text" name="system.Pools.CustomPool2.name" value="{{actor.system.Pools.CustomPool2.name}}" class="noBord" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.CustomPool2.max" value="{{actor.system.Pools.CustomPool2.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.CustomPool2.value" value="{{actor.system.Pools.CustomPool2.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.CustomPool2.temporary" value="{{actor.system.Pools.CustomPool2.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+            <div style="display: grid; row-gap: 4px;">
+                <input type="text" name="system.Pools.CustomPool3.name" value="{{actor.system.Pools.CustomPool3.name}}" class="noBord" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
+                    <input class="noRBord" type="text" name="system.Pools.CustomPool3.max" value="{{actor.system.Pools.CustomPool3.max}}" style="width: 28px; height: 28px;"/>
+                    <input type="text" name="system.Pools.CustomPool3.value" value="{{actor.system.Pools.CustomPool3.value}}" style="width: 42px; height: 42px;"/>
+                    <input class="noLBord" type="text" name="system.Pools.CustomPool3.temporary" value="{{actor.system.Pools.CustomPool3.temporary}}" style="width: 21px; height: 21px;"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hkFlex" style="column-gap: 14px; align-items: center; justify-content: space-evenly;">
+            <div style="display: grid;">
+                <span style="font-size: 13px;">Spook</span>
+                <input type="text" name="system.OtherAttr.Spook" value="{{actor.system.OtherAttr.Spook}}" style="width: 35px;">
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 13px;">Cute</span>
+                <input type="text" name="system.OtherAttr.Cute" value="{{actor.system.OtherAttr.Cute}}" style="width: 35px;">
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 17px; justify-self: center;">Speed</span>
+                <div class="hkFlex">
+                    <input class="noRBord" type="text" name="system.OtherAttr.Speed.max" value="{{actor.system.OtherAttr.Speed.max}}" style="width: 28px; height: 28px;">
+                    <input type="text" name="system.OtherAttr.Speed.value" value="{{actor.system.OtherAttr.Speed.value}}" style="width: 42px; height: 42px;">
+                </div>
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 11px;">Footwork</span>
+                <input type="text" name="system.Attr.Footwork" value="{{actor.system.Attr.Footwork}}" style="width: 35px;">
+            </div>
+
+            <div style="display: grid;">
+                <span style="font-size: 17px; justify-self: center;">Belly</span>
+                <div class="hkFlex">
+                    <input class="noRBord" type="text" name="system.OtherAttr.Belly.max" value="{{actor.system.OtherAttr.Belly.max}}" style="width: 28px; height: 28px;">
+                    <input type="text" name="system.OtherAttr.Belly.value" value="{{actor.system.OtherAttr.Belly.value}}" style="width: 42px; height: 42px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

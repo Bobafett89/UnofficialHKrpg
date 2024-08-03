@@ -1,0 +1,235 @@
+<div id="LeftSideOfEquipmentTab" style="grid-area: a;">
+    <div id="ListOfWeapons">
+        <span style="font-size: 20px;">Weapons & Shields</span>
+        <div class="WeaponList">
+            <div class="WeaponListGrid UpListHeader">
+                <span>Name</span>
+                <span>Damage</span>
+                <span>Quality</span>
+                <span>Range</span>
+                <span>Bulk</span>
+                <span>Use</span>
+                {{#if actor.system.Other.EditEquipment}}
+                <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
+                {{/if}}
+            </div>
+            <div>
+                {{#each actor.itemTypes.Weapon as |item|}}
+                <div class="WeaponListGrid">
+                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{item.system.Damage}}</span>
+                    <span class="ItemListItem">{{item.system.Quality}}</span>
+                    <span class="ItemListItem">{{item.system.Range}}</span>
+                    <span class="ItemListItem">{{item.system.Bulk}}</span>
+                    <span class="hkUse ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}} data-itemid="{{item.id}}"><i class="fa-solid fa-swords"></i></span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Shield as |item|}}
+                <div class="WeaponListGrid">
+                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{item.system.Damage}}</span>
+                    <span class="ItemListItem">{{item.system.Quality}}</span>
+                    <span class="ItemListItem">Melee</span>
+                    <span class="ItemListItem">{{item.system.Bulk}}</span>
+                    <span class="hkUse ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}} data-itemid="{{item.id}}"><i class="fa-solid fa-shield-quartered"></i></span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.ArcaneFoci as |item|}}
+                <div class="WeaponListGrid">
+                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{item.system.Damage}}</span>
+                    <span class="ItemListItem">{{item.system.Quality}}</span>
+                    <span class="ItemListItem">Melee</span>
+                    <span class="ItemListItem">{{item.system.Bulk}}</span>
+                    <span class="hkUse ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}} data-itemid="{{item.id}}"><i class="fa-solid fa-staff"></i></span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div id="ListOfArmor">
+        <span style="font-size: 20px;">Armor</span>
+        <div class="ArmorList">
+            <div class="ArmorListGrid DownListHeader">
+                <span>Name</span>
+                <span>DR</span>
+                <span>Durability</span>
+                <span>Bulk</span>
+                {{#if actor.system.Other.EditEquipment}}
+                <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
+                {{/if}}
+            </div>
+            <div>
+                {{#each actor.itemTypes.Armor as |item|}}
+                <div class="ArmorListGrid">
+                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{item.system.DamageReduction}}</span>
+                    <span class="ItemListItem">{{item.system.Durability.value}}/{{item.system.Durability.max}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="RightSideOfEquipmentTab" style="grid-area: b;">
+    <div id="ListOfEquipments">
+        <div class="hkFlex" style="align-items: end; justify-content: space-between;">
+            <span style="font-size: 20px;">Equipment</span>
+            <div>
+                <span style="font-size: 14px;">Belt: </span>
+                <input type="text" name="system.Attr.BeltSize" value="{{actor.system.Attr.BeltSize}}" style="width: 25px; height: 20px;"/>
+            </div>
+        </div>
+        <div class="EquipmentList">
+            <div class="EquipmentListGrid UpListHeader">
+                <span>Name</span>
+                <span>Belt</span>
+                <span>Bulk</span>
+                {{#if actor.system.Other.EditEquipment}}
+                <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
+                {{/if}}
+            </div>
+            <div>
+                {{#each actor.itemTypes.Food as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Potion as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Flask as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Poison as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Trap as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Tool as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+                {{#each actor.itemTypes.Other as |item|}}
+                <div class="EquipmentListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Bulk}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div id="ListOfCharms">
+        <div class="hkFlex" style="align-items: end; justify-content: space-between;">
+            <span style="font-size: 20px;">Charms</span>
+            <div>
+                <span style="font-size: 14px;">Notches:</span>
+                <input type="text" name="system.OtherAttr.Notches" value="{{actor.system.OtherAttr.Notches}}" style="width: 25px; height: 20px;"/>
+            </div>
+        </div>
+        <div class="CharmList">
+            <div class="CharmListGrid DownListHeader">
+                <span>Name</span>
+                <span>Attuned</span>
+                <span>Notches</span>
+                {{#if actor.system.Other.EditEquipment}}
+                <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
+                {{/if}}
+            </div>
+            <div>
+                {{#each actor.itemTypes.Charm as |item|}}
+                <div class="CharmListGrid">
+                    <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
+                    <span class="ItemListItem">{{#if item.system.Attuned}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+                    <span class="ItemListItem" {{#if actor.system.Other.EditEquipment}}{{else}}style="border-right: 0;"{{/if}}>{{item.system.Notches}}</span>
+                    {{#if actor.system.Other.EditEquipment}}
+                    <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hkFlex" style="align-items: center; grid-area: c; column-gap: 50px;">
+    <div class="hkFlex" style="align-items: center; column-gap: 5px;">
+        <span>Geo:</span>
+        <input type="text" name="system.Other.Geo" value="{{actor.system.Other.Geo}}" style="max-width: 100px;"/>
+    </div>
+
+    <div class="hkFlex" style="align-items: center; column-gap: 5px;">
+        <span>Total bulk:</span>
+        <input type="text" name="system.Other.Bulk" value="{{actor.system.Other.Bulk}}" style="width: 26px;"/>
+        <span>out of</span>
+        <div style="display: grid; margin-bottom: 18px;">
+            <span>Load</span>
+            <input type="text" name="system.Attr.Load" value="{{actor.system.Attr.Load}}" style="width: 26px;"/>
+        </div>
+    </div>
+</div>
+
+<div class="hkFlex" style="align-items: center; grid-area: d;">
+    <span>Edit:</span>
+    <input type="checkbox" name="system.Other.EditEquipment" {{#if actor.system.Other.EditEquipment}}checked{{/if}} style="width: 25px; height: 25px;"/>
+</div>

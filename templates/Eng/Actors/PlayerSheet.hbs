@@ -1,0 +1,30 @@
+<form class="flexcol" autocomplete="off" style="row-gap: 10px;">
+    <header style="min-height:300px; max-height: 300px;">
+            {{> "systems/hkrpg/templates/Eng/Actors/Parts/HeaderPart.hbs"}}
+    </header>
+
+    <nav class="hkTabs" data-group="hkGroup" style="height: 50px; max-height: 50px; min-height: 50px;">
+        <a data-tab="Biography" data-group="hkGroup">Biography</a>
+        <a data-tab="Weapons" data-group="hkGroup">Equipment</a>
+        <a data-tab="Skills" data-group="hkGroup" style="text-wrap: nowrap;">Skills & Traits</a>
+    </nav>
+
+    <section class="hkContent">
+        <div class="tab" data-tab="Biography" data-group="hkGroup">
+            <div class="BiographyTab">
+                <span style="font-size: 20px;">Biography & Description</span>
+                <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="Enter text here...">{{item.system.Description}}</textarea>
+            </div>
+        </div>
+        <div class="tab" data-tab="Weapons" data-group="hkGroup">
+            <div class="EquipmentTab">
+                {{> "systems/hkrpg/templates/Eng/Actors/Parts/EquipmentTab.hbs"}}
+            </div>
+        </div>
+        <div class="tab" data-tab="Skills" data-group="hkGroup">
+            <div class="SkillsTab">
+                {{> "systems/hkrpg/templates/Eng/Actors/Parts/SkillsTab.hbs"}}
+            </div>
+        </div>
+    </section>
+</form>
