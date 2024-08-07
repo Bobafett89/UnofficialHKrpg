@@ -20,19 +20,19 @@ export class ActorDataModel extends foundry.abstract.TypeDataModel {
                     max: new NumberField({required: true, initial: 3})
                 }),
                 CustomPool1: new SchemaField({
-                    name: new StringField({required: true, initial: "Custom Pool 1"}),
+                    name: new StringField({required: true, initial: ""}),
                     value: new NumberField({required: true, initial: 0}),
                     temporary: new NumberField({required: true, initial: 0}),
                     max: new NumberField({required: true, initial: 0})
                 }),
                 CustomPool2: new SchemaField({
-                    name: new StringField({required: true, initial: "Custom Pool 2"}),
+                    name: new StringField({required: true, initial: ""}),
                     value: new NumberField({required: true, initial: 0}),
                     temporary: new NumberField({required: true, initial: 0}),
                     max: new NumberField({required: true, initial: 0})
                 }),
                 CustomPool3: new SchemaField({
-                    name: new StringField({required: true, initial: "Custom Pool 3"}),
+                    name: new StringField({required: true, initial: ""}),
                     value: new NumberField({required: true, initial: 0}),
                     temporary: new NumberField({required: true, initial: 0}),
                     max: new NumberField({required: true, initial: 0})
@@ -79,7 +79,7 @@ export class ActorDataModel extends foundry.abstract.TypeDataModel {
                     main: new NumberField({required: true, initial: 0}),
                     minorAdv: new NumberField({required: true, initial: 0})
                 }),
-                PlayerName: new StringField({required: true, initial: "Nameless Bug"}),
+                PlayerName: new StringField({required: true, initial: ""}),
                 EditEquipment: new BooleanField({required: true, initial: false}),
                 EditSkills: new BooleanField({required: true, initial: false}),
                 Geo: new NumberField({required: true, initial: 0}),
@@ -95,7 +95,7 @@ export class ActorDataModel extends foundry.abstract.TypeDataModel {
 
 export class BugCombatant extends Combatant {
     _getInitiativeFormula() {
-        let grace = this.actor.system.Attr.Grace.value;
+        let grace = this.actor.system.Attr.Grace.value + this.actor.system.Attr.Grace.temporary;
         return `${grace}d6`;
     }
 }

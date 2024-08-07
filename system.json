@@ -46,5 +46,10 @@
     "lang": "en",
     "name": "English",
     "path": "languages/en.json"
+  },
+  {
+    "lang": "ru",
+    "name": "Русский",
+    "path": "languages/ru.json"
   }]
 }

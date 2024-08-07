@@ -2,7 +2,7 @@ export class BugSheet extends ActorSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: game.i18n.localize("hkPlayerSheet"),
+      template: "systems/hkrpg/templates/Actors/PlayerSheet.hbs",
       tabs: [{group: "hkGroup", navSelector: ".hkTabs", contentSelector: ".hkContent", initial: "Weapons" }]
     });
   }
