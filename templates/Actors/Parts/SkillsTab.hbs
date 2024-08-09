@@ -1,153 +1,71 @@
-<div style="grid-area: a;">
-    <div>
-        <span style="font-size: 20px;">Traits</span>
-        <div class="TraitList">
-            <div class="TraitListGrid UpListHeader">
-                <span>Name</span>
-                <span>Hunger</span>
-                <span>Cute</span>
-                <span>Spook</span>
-                {{#if actor.system.Other.EditSkills}}
-                    <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
-                {{/if}}
-            </div>
-            <div>
-                {{#each actor.itemTypes.Trait as |item|}}
-                <div class="TraitListGrid">
-                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
-                    <span class="ItemListItem">{{item.system.Hunger}}</span>
-                    <span class="ItemListItem">{{item.system.Cute}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}} style="border-right: 0px;"{{/if}}>{{item.system.Spook}}</span>
-                    {{#if actor.system.Other.EditSkills}}
-                        <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
-                    {{/if}}
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
+<div class="TraitList">
+    <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "Traits"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Hunger"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 3/4; font-size: 11px;">{{localize "Cute"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 4/5; font-size: 11px;">{{localize "Spook"}}</span>
 
-    <div>
-        <span style="font-size: 20px;">Proficiency</span>
-        <div class="ProfList">
-            <div class="ProfListGridHead DownListHeader">
-                <span>Name</span>
-                <span>Rank</span>
-                <span>Mastery</span>
-                {{#if actor.system.Other.EditSkills}}
-                    <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
-                {{/if}}
-            </div>
-            <div>
-                {{#each actor.itemTypes.Proficiency as |item|}}
-                <div class="ProfListGridProf">
-                    <span class="hkOpenSheet ItemListItem" style="border-top-width: 2px;" data-itemid="{{item.id}}">{{item.name}}</span>
-                    <span class="ItemListItem" style="border-top-width: 2px;">{{item.system.Rank}}</span>
-                    <span class="ItemListItem" style="background-color: #d4d4d4; border-right: 0; border-top-width: 2px;"></span>
-                    {{#if actor.system.Other.EditSkills}}
-                        <span class="hkItemDelete ItemListItem" style="border-right: 0; border-top-width: 2px;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
-                    {{/if}}
-                </div>
-
-                <div class="ProfListGridSkill">
-                    <span class="ItemListItem">{{item.system.Skill1.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0;"{{/if}}>{{#if item.system.Skill1.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
-                </div>
-
-                <div class="ProfListGridSkill">
-                    <span class="ItemListItem">{{item.system.Skill2.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0;"{{/if}}>{{#if item.system.Skill2.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
-                </div>
-
-                <div class="ProfListGridSkill">
-                    <span class="ItemListItem">{{item.system.Skill3.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0;"{{/if}}>{{#if item.system.Skill3.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
-                </div>
-
-                <div class="ProfListGridSkill">
-                    <span class="ItemListItem">{{item.system.Skill4.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0;"{{/if}}>{{#if item.system.Skill4.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
+    {{#each actor.itemTypes.Trait as |item|}}
+    <span class="hkOpenSheet ItemListItem" style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 2/3;">{{item.system.Hunger}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{item.system.Cute}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 4/5;">{{item.system.Spook}}</span>
+    {{/each}}
 </div>
 
-<div style="grid-area: b;">
-    <div>
-        <span style="font-size: 20px;">Paths</span>
-        <div class="PathList">
-            <div class="PathListGrid UpListHeader">
-                <span>Name</span>
-                <span>Path ranks</span>
-                {{#if actor.system.Other.EditSkills}}
-                    <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
-                {{/if}}
-            </div>
-            <div>
-                {{#each actor.itemTypes.Path as |item|}}
-                <div class="PathListGrid">
-                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
-                    <span class="ItemListItem" style="column-gap: 5px; {{#if actor.system.Other.EditSkills}}{{else}}border-right: 0px;{{/if}}">
-                    {{#if item.system.Rank1}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
-                    {{#if item.system.Rank2}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
-                    {{#if item.system.Rank3}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
-                    </span>
-                    {{#if actor.system.Other.EditSkills}}
-                        <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
-                    {{/if}}
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
+<div class="ProfList">
+    <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px">{{localize "Proficiencies"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px">{{localize "Rank"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 3/4; font-size: 11px;"></span>
 
-    <div>
-        <div class="hkFlex" style="justify-content: space-between; align-items: end;">
-            <span style="font-size: 20px;">Techniques</span>
-            <div class="hkFlex" style="align-items: center; column-gap: 3px;">
-                <span>Slots:</span>
-                <input type="text" name="system.Attr.TechSlots" value="{{actor.system.Attr.TechSlots}}" style="width: 30px; height: 20px;" />
-            </div>
-        </div>
-        <div class="ArtList">
-            <div class="ArtListGrid DownListHeader">
-                <span>Name</span>
-                <span>Prepared</span>
-                {{#if actor.system.Other.EditSkills}}
-                    <span style="padding-left: 5px; padding-right: 5px;">Delete</span>
-                {{/if}}
-            </div>
-            <div>
-                {{#each actor.itemTypes.Arcana as |item|}}
-                <div class="ArtListGrid">
-                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0px;"{{/if}}>
-                        {{#if item.system.Attuned}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
-                    </span>
-                    {{#if actor.system.Other.EditSkills}}
-                        <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
-                    {{/if}}
-                </div>
-                {{/each}}
-                {{#each actor.itemTypes.Art as |item|}}
-                <div class="ArtListGrid">
-                    <span class="hkOpenSheet ItemListItem" data-itemid="{{item.id}}">{{item.name}}</span>
-                    <span class="ItemListItem" {{#if actor.system.Other.EditSkills}}{{else}}style="border-right: 0px;"{{/if}}>
-                        {{#if item.system.Prepared}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
-                    </span>
-                    {{#if actor.system.Other.EditSkills}}
-                        <span class="hkItemDelete ItemListItem" style="border-right: 0;" data-itemid="{{item.id}}"><i class="fas fa-times"></i></span>
-                    {{/if}}
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
+    {{#each actor.itemTypes.Proficiency as |item|}}
+    <span class="hkOpenSheet ItemListItem" style="grid-column: 1/2; border-bottom-width: 2px;" data-itemid="{{item.id}}">{{item.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 2/3; border-bottom-width: 2px;">{{item.system.Rank}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4; border-bottom-width: 2px; font-size: 10px; align-items: end;">{{localize "Mastery"}}</span>
+
+    <span class="ItemListItem" style="grid-column: 1/3; border-left: 3px solid black;">{{item.system.Skill1.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{#if item.system.Skill1.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
+
+    <span class="ItemListItem" style="grid-column: 1/3; border-left: 3px solid black;">{{item.system.Skill2.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{#if item.system.Skill2.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
+
+    <span class="ItemListItem" style="grid-column: 1/3; border-left: 3px solid black;">{{item.system.Skill3.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{#if item.system.Skill3.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
+
+    <span class="ItemListItem" style="grid-column: 1/3; border-left: 3px solid black; border-bottom-width: 3px;">{{item.system.Skill4.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 3/4; border-bottom-width: 3px;">{{#if item.system.Skill4.mastery}}<i class="fa-solid fa-star"></i>{{/if}}</i></span>
+    {{/each}}
 </div>
 
-<div class="hkFlex" style="align-items: center; grid-area: c;">
-    <span>Edit:</span>
-    <input type="checkbox" name="system.Other.EditSkills" {{#if actor.system.Other.EditSkills}}checked{{/if}} style="width: 25px; height: 25px;"/>
+
+<div class="PathList">
+    <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "Paths"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Path ranks"}}</span>
+    
+    {{#each actor.itemTypes.Path as |item|}}
+    <span class="hkOpenSheet ItemListItem"  style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 2/3; column-gap: 5px;">
+    {{#if item.system.Rank1}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+    {{#if item.system.Rank2}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+    {{#if item.system.Rank3}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+    </span>
+    {{/each}}
+</div>
+
+<div class="ArtList">
+    <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "Techniques"}}</span>
+    <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Slots"}}: <input type="text" name="system.Attr.TechSlots" value="{{actor.system.Attr.TechSlots}}" style="width: 20px; height: 15px;"></span>
+
+    {{#each actor.itemTypes.Arcana as |item|}}
+    <span class="hkOpenSheet ItemListItem" style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 2/3;">
+        {{#if item.system.Attuned}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+    </span>
+    {{/each}}
+
+    {{#each actor.itemTypes.Art as |item|}}
+    <span class="hkOpenSheet ItemListItem" style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+    <span class="ItemListItem ItemListBorder" style="grid-column: 2/3;">
+        {{#if item.system.Prepared}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+    </span>
+    {{/each}}
 </div>

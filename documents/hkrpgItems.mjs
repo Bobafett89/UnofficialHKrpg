@@ -102,6 +102,7 @@ export class ShieldDataModel extends EquipmentDataModel {
         return {
             ...super.defineSchema(),
             Damage: new NumberField({required: true, initial: 2}),
+            Range: new StringField({required: true, initial: "Melee"}),
             Hands: new StringField({required: true, initial: "1H"}),
             Quality: new NumberField({required: true, initial: 0}),
             BashQuality: new NumberField({required: true, initial: 0}),
@@ -198,7 +199,7 @@ export class ToolDataModel extends EquipmentDataModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
-            Skills: new StringField({required: true, initial: "Common"}),
+            Skills: new StringField({required: true, initial: ""}),
             Weapons: new StringField({required: true, initial: "No"}),
             Belt: new BooleanField({required: true, initial: false})
         }
@@ -209,7 +210,7 @@ export class OtherDataModel extends EquipmentDataModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
-            Belt: new BooleanField({required: true, boolean: true, initial: true})
+            Belt: new BooleanField({required: true, boolean: true, initial: false})
         }
     }
 }

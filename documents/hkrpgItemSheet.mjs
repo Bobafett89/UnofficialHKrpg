@@ -1,4 +1,35 @@
-export class WeaponSheet extends ItemSheet {
+class hkItemSheet extends ItemSheet {
+  
+  activateListeners(html) {
+    super.activateListeners(html);
+    html.on('click', '.hkItemDelete', hkItemDeleteDialog.bind(this))
+  }
+}
+
+async function hkItemDeleteDialog() {
+  let name = this.item.name;
+  let di = game.i18n.localize("Delete item");
+  let d = new Dialog({
+    title: `${di}: ${name}`,
+    content: game.i18n.localize("Are you sure?"),
+    buttons: {
+      one: {
+        label: game.i18n.localize("Yes"),
+        callback: () => hkItemDelete(this.item)
+      },
+      two: {
+        label: game.i18n.localize("No")
+      }
+    }
+  });
+  d.render(true);
+}
+
+async function hkItemDelete(item) {
+  item.delete();
+}
+
+export class WeaponSheet extends hkItemSheet {
 
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
@@ -7,7 +38,7 @@ export class WeaponSheet extends ItemSheet {
     }
 }
 
-export class ShieldSheet extends ItemSheet {
+export class ShieldSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -16,7 +47,7 @@ export class ShieldSheet extends ItemSheet {
   }
 }
 
-export class ArcaneFociSheet extends ItemSheet {
+export class ArcaneFociSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -25,7 +56,7 @@ export class ArcaneFociSheet extends ItemSheet {
   }
 }
 
-export class ArmorSheet extends ItemSheet {
+export class ArmorSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -34,7 +65,7 @@ export class ArmorSheet extends ItemSheet {
   }
 }
 
-export class FoodSheet extends ItemSheet {
+export class FoodSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -43,7 +74,7 @@ export class FoodSheet extends ItemSheet {
   }
 }
 
-export class PotionSheet extends ItemSheet {
+export class PotionSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -52,7 +83,7 @@ export class PotionSheet extends ItemSheet {
   }
 }
 
-export class FlaskSheet extends ItemSheet {
+export class FlaskSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -61,7 +92,7 @@ export class FlaskSheet extends ItemSheet {
   }
 }
 
-export class PoisonSheet extends ItemSheet {
+export class PoisonSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -70,7 +101,7 @@ export class PoisonSheet extends ItemSheet {
   }
 }
 
-export class TrapSheet extends ItemSheet {
+export class TrapSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -79,7 +110,7 @@ export class TrapSheet extends ItemSheet {
   }
 }
 
-export class ToolSheet extends ItemSheet {
+export class ToolSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -88,7 +119,7 @@ export class ToolSheet extends ItemSheet {
   }
 }
 
-export class OtherSheet extends ItemSheet {
+export class OtherSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -97,7 +128,7 @@ export class OtherSheet extends ItemSheet {
   }
 }
 
-export class CharmSheet extends ItemSheet {
+export class CharmSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -106,7 +137,7 @@ export class CharmSheet extends ItemSheet {
   }
 }
 
-export class TraitSheet extends ItemSheet {
+export class TraitSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -115,7 +146,7 @@ export class TraitSheet extends ItemSheet {
   }
 }
 
-export class ProfSheet extends ItemSheet {
+export class ProfSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -124,7 +155,7 @@ export class ProfSheet extends ItemSheet {
   }
 }
 
-export class PathSheet extends ItemSheet {
+export class PathSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -133,7 +164,7 @@ export class PathSheet extends ItemSheet {
   }
 }
 
-export class ArtSheet extends ItemSheet {
+export class ArtSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -142,7 +173,7 @@ export class ArtSheet extends ItemSheet {
   }
 }
 
-export class ArcanaSheet extends ItemSheet {
+export class ArcanaSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {

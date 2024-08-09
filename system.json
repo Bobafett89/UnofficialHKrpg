@@ -2,15 +2,15 @@
   "id": "hkrpg",
   "title": "The Unofficial Hollow Knight RPG",
   "description": "The Unofficial Hollow Knight RPG system for FoundryVTT. Work in progress.",
-  "version": "0.1.1",
+  "version": "0.2",
   "compatibility": {
     "minimum": 12,
-    "verified": "12 build 330"
+    "verified": "12.330"
   },
   "authors": [{"name": "Boba"}],
   "url": "https://github.com/Bobafett89/UnofficialHKrpg",
   "manifest": "https://raw.githubusercontent.com/Bobafett89/UnofficialHKrpg/master/system.json",
-  "download": "https://github.com/Bobafett89/UnofficialHKrpg/releases/download/version-0.1.1/hkrpg.zip",
+  "download": "https://github.com/Bobafett89/UnofficialHKrpg/releases/download/version-0.2/hkrpg.zip",
   "esmodules": ["hkrpg.mjs"],
   "documentTypes": {
   "Actor": {

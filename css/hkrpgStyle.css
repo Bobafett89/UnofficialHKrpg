@@ -48,174 +48,102 @@ div.sheet .test {
 
 .EquipmentTab  {
     display: grid !important;
-    grid-template: "a b" min-content
-                   "c c" min-content
-                   "d d" min-content / min-content min-content;
+    grid-template: "c c" min-content
+                   "a b" min-content / min-content min-content;
     column-gap: 50px;
     row-gap: 15px;
 }
 .WeaponList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.WeaponListGrid {
-    display: grid;
-    grid-template-columns: 150px 63px 58px 50px 39px 35px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content max-content max-content max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 .ArmorList {
     display: grid;
-    border: 2px solid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.ArmorListGrid {
-    display: grid;
-    grid-template-columns: 150px 63px 110px 72px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 .EquipmentList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.EquipmentListGrid {
-    display: grid;
-    grid-template-columns: 150px 63px 64px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 .CharmList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.CharmListGrid {
-    display: grid;
-    grid-template-columns: 150px 63px 64px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 .SkillsTab {
     display: grid !important;
-    grid-template: "a b" min-content
-                   "a b" min-content
-                   "c c" min-content / min-content min-content;
-    column-gap: 50px;
+    grid-template: "a b c d" min-content / min-content min-content min-content min-content;
+    column-gap: 35px;
     row-gap: 15px;
 }
 .TraitList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.TraitListGrid {
-    display: grid;
-    grid-template-columns: 150px 59px 41px 50px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
+    grid-area: b;
 }
 .ProfList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.ProfListGridHead {
-    display: grid;
-    grid-template-columns: 150px 64px 86px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
-}
-.ProfListGridProf {
-    display: grid;
-    grid-template-columns: 150px 64px 86px auto;
-    grid-template-rows: 25px;
-    align-items: center;
-    justify-items: center;
-}
-.ProfListGridSkill {
-    display: grid;
-    grid-template-columns: 214px 86px;
-    grid-template-rows: 25px;
-    align-items: center;
-    justify-items: center;
+    width: 100%;
+    grid-area: a;
 }
 .PathList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.PathListGrid {
-    display: grid;
-    grid-template-columns: 150px 80px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
+    width: 100%;
+    grid-area: d;
 }
 .ArtList {
     display: grid;
-    width: min-content;
-    grid-auto-rows: minmax(25px, auto);
-    border: 2px solid;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.ArtListGrid {
-    display: grid;
-    grid-template-columns: 150px 80px auto;
-    grid-template-rows: 25px;
+    grid-template-columns: minmax(max-content, 100%) max-content;
+    grid-auto-rows: 25px;
     align-items: center;
     justify-items: center;
-}
-.UpListHeader {
-    background-color: #646464;
-    color: white;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom: 1px solid #646464;
-}
-.DownListHeader {
-    background-color: #646464;
-    color: white;
-    border-bottom: 1px solid #646464;
+    width: 100%;
+    grid-area: c;
 }
 .ItemListItem {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
     width: 100%;
     height: 100%;
-    border-top: 1px solid #969696;
-    border-right: 2px dotted #969696;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.ItemListBorder {
+    border-left: 2px dotted #646464;
+}
+.ItemListItem.ItemListHeader {
+    border-bottom: 3px solid black;
+    border-left: 0;
+    align-items: end;
 }
 .hkOpenSheet:hover {
     cursor: pointer;
@@ -249,6 +177,7 @@ div.sheet .test {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+    padding-right: 10px;
 }
 .attrBox1{
     grid-row-start: 1;
@@ -290,6 +219,12 @@ div.dialog form {
 div.dialog section.window-content{
     background: white;
     color: black;
+}
+div.sheet span {
+    text-wrap: nowrap;
+}
+div.dialog span {
+    text-wrap: nowrap;
 }
 div.dialog input[type="text"] {
     border-radius: 0px;

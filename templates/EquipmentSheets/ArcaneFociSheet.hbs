@@ -1,47 +1,49 @@
 <form class="flexcol" autocomplete="off">
-    <header style="display: grid; grid-template-rows: 100px 100px 200px; row-gap: 10px;">
+    <header style="display: grid; grid-template-rows: min-content min-content min-content; row-gap: 10px;">
         <div class="hkFlex" style="column-gap: 5px; align-items: center;">
             <img src="{{item.img}}" data-edit="img" height="100px" width="100px" style="object-fit: contain;"/>
             <input class="noBord" type="text" name="name" value="{{item.name}}" style="max-width: 300px;"/>
         </div>
 
-        <div class="hkFlex" style="column-gap: 15px;">
+        <div class="hkFlex" style="column-gap: 15px; align-items: center;">
             <div style="display: grid; justify-items: center;">
-                <span>Damage</span>
+                <span>{{localize "Damage"}}</span>
                 <input type="text" name="system.Damage" value="{{item.system.Damage}}" style="max-width: 40px;"/>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span>Quality</span>
+                <span>{{localize "Quality"}}</span>
                 <input type="text" name="system.Quality" value="{{item.system.Quality}}" style="max-width: 40px;"/>
             </div>
             
             <div style="display: grid; justify-items: center;">
-                <span>Range</span>
+                <span>{{localize "Range"}}</span>
                 <input type="text" name="system.Range" value="{{item.system.Range}}" style="max-width: 40px;"/>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span>Handedness</span>
+                <span>{{localize "Handedness"}}</span>
                 <input type="text" name="system.Hands" value="{{item.system.Hands}}" style="max-width: 40px;"/>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span>Type</span>
+                <span>{{localize "Type"}}</span>
                 <input type="text" name="system.Type" value="{{item.system.Type}}" style="max-width: 75px;"/>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span>Bulk</span>
+                <span>{{localize "Bulk"}}</span>
                 <input type="text" name="system.Bulk" value="{{item.system.Bulk}}" style="max-width: 40px;"/>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span>Cost</span>
+                <span>{{localize "Cost"}}</span>
                 <input type="text" name="system.Cost" value="{{item.system.Cost}}" style="max-width: 40px;"/>
             </div>
+
+            <input type="button" class="hkItemDelete" value="{{localize "Delete"}}" />
         </div>
 
-        <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="Enter description here...">{{item.system.Description}}</textarea>
+        <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="{{localize "Enter description here..."}}">{{item.system.Description}}</textarea>
     </header>
 </form>

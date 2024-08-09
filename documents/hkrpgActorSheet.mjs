@@ -11,7 +11,6 @@ export class BugSheet extends ActorSheet {
     html.on('click', '.rollable', hkRoll.bind(this));
     html.on('click', '.hkOpenSheet', hkOpen.bind(this));
     html.on('click', '.hkUse', hkUseDialog.bind(this));
-    html.on('click', '.hkItemDelete', hkItemDelete.bind(this));
   }
 }
 
@@ -37,15 +36,16 @@ async function hkUseDialog(html) {
   let might = m.value + m.temporary;
   let g = actor.system.Attr.Grace;
   let grace = g.value + g.temporary;
+  let u = game.i18n.localize("Use");
   let d = new Dialog({
-    title: `Use ${item.type}`,
+    title: `${u} ${item.name}`,
     buttons: {
      one: {
-      label: "Attack",
+      label: game.i18n.localize("Attack"),
       callback: () => hkAttackDialog(item, might, grace, actor)
      }, 
      two: {
-      label: "Parry",
+      label: game.i18n.localize("Parry"),
       callback: () => hkParryDialog(item, might, grace, actor)
      }, 
     }
@@ -58,16 +58,18 @@ async function hkAttackDialog(Item, Might, Grace, Actor) {
   let item = Item;
   let might = Might;
   let grace = Grace;
+  let ds = game.i18n.localize("Dedicated stamina");
+  let b = game.i18n.localize("Bonus");
   let d = new Dialog({
-    title: "Roll attack",
-    content: "<div style='display: grid; padding-bottom: 10px;'><div class='hkFlex'><span>Dedicated stamina</span><input id='DedStaAtt' type='text' value='1'/></div><div class='hkFlex' style='column-gap: 10px;'><span>Bonus</span><input id='BonAtt' type='text' value='0'/></div></div>",
+    title: game.i18n.localize("Attack roll"),
+    content: `<div style='display: grid; padding-bottom: 10px;'><div class='hkFlex'><span>${ds}</span><input id='DedStaAtt' type='text' value='1'/></div><div class='hkFlex' style='column-gap: 10px;'><span>${b}</span><input id='BonAtt' type='text' value='0'/></div></div>`,
     buttons: {
      one: {
-      label: "Might",
+      label: game.i18n.localize("Might"),
       callback: () => hkAttackRoll(item, might, actor)
      }, 
      two: {
-      label: "Grace",
+      label: game.i18n.localize("Grace"),
       callback: () => hkAttackRoll(item, grace, actor)
      }, 
     }
@@ -103,7 +105,10 @@ async function hkAttackRoll(item, ability, actor)
       damage += Math.min((suc-1), cap);
     }
   }
-  roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: actor }), flavor: `Spent stamina: ${stamina} | Base damage: ${item.system.Damage} | Total Damage: ${damage}`});
+  let s = game.i18n.localize("Spent stamina");
+  let bd = game.i18n.localize("Base damage");
+  let td = game.i18n.localize("Total damage");
+  roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: actor }), flavor: `${s}: ${stamina} | ${bd}: ${item.system.Damage} | ${td}: ${damage}`});
 }
 
 async function hkParryDialog(Item, Might, Grace, Actor) {
@@ -111,16 +116,18 @@ async function hkParryDialog(Item, Might, Grace, Actor) {
   let item = Item;
   let might = Might;
   let grace = Grace;
+  let ds = game.i18n.localize("Dedicated stamina");
+  let b = game.i18n.localize("Bonus");
   let d = new Dialog({
-    title: "Parry",
-    content: "<div style='display: grid; padding-bottom: 10px;'><div class='hkFlex'><span>Dedicated stamina</span><input id='DedStaPar' type='text' value='1'/></div><div class='hkFlex' style='column-gap: 10px;'><span>Bonus</span><input id='BonPar' type='text' value='0'/></div></div>",
+    title: game.i18n.localize("Parry roll"),
+    content: `<div style='display: grid; padding-bottom: 10px;'><div class='hkFlex'><span>${ds}</span><input id='DedStaPar' type='text' value='1'/></div><div class='hkFlex' style='column-gap: 10px;'><span>${b}</span><input id='BonPar' type='text' value='0'/></div></div>`,
     buttons: {
      one: {
-      label: "Might",
+      label: game.i18n.localize("Might"),
       callback: () => hkParryRoll(item, might, actor)
      }, 
      two: {
-      label: "Grace",
+      label: game.i18n.localize("Grace"),
       callback: () => hkParryRoll(item, grace, actor)
      }, 
     }
@@ -149,10 +156,6 @@ async function hkParryRoll(item, ability, actor)
     roll = new Roll("(@abil + @stam * 2 + @bon)d6cs>=5", {abil: Number(ability), stam: Number(stamina), bon: Number(bonus)});
   }
   await roll.evaluate();
-  roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: actor }), flavor: `Spent stamina: ${stamina}`});
-}
-
-async function hkItemDelete(html) {
-  let item = this.actor.items.get(html.currentTarget.dataset.itemid);
-  item.delete();
+  let s = game.i18n.localize("Spent stamina");
+  roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: actor }), flavor: `${s}: ${stamina}`});
 }

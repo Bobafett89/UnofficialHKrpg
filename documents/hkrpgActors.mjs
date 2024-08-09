@@ -80,10 +80,9 @@ export class ActorDataModel extends foundry.abstract.TypeDataModel {
                     minorAdv: new NumberField({required: true, initial: 0})
                 }),
                 PlayerName: new StringField({required: true, initial: ""}),
-                EditEquipment: new BooleanField({required: true, initial: false}),
-                EditSkills: new BooleanField({required: true, initial: false}),
                 Geo: new NumberField({required: true, initial: 0}),
-                Bulk: new NumberField({required: true, initial: 0})
+                Bulk: new NumberField({required: true, initial: 0}),
+                Bio: new StringField({required: true, initial: ""})
             })
         };
     }
