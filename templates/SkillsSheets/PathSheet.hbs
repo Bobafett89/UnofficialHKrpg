@@ -14,15 +14,23 @@
 
             <div style="display: grid; justify-items: center;">
                 <span>{{localize "Rank"}} 2</span>
-                <input type="checkbox" name="system.Rank2" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.Rank2}}checked{{/if}}/>
+                <input type="checkbox" name="system.Rank2" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.Rank2}}checked{{/if}} {{#unless item.system.Rank1}}disabled{{/unless}}/>
             </div>
 
             <div style="display: grid; justify-items: center;">
                 <span>{{localize "Rank"}} 3</span>
-                <input type="checkbox" name="system.Rank3" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.Rank3}}checked{{/if}}/>
+                <input type="checkbox" name="system.Rank3" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.Rank3}}checked{{/if}} {{#unless item.system.Rank2}}disabled{{/unless}}/>
             </div>
 
-            <input type="button" class="hkItemDelete" value="{{localize "Delete"}}" />
+            <div style="display: grid; justify-items: center;">
+                <span>{{localize "Is martial?"}}</span>
+                <input type="checkbox" name="system.IsMartial" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.IsMartial}}checked{{/if}}/>
+            </div>
+
+            <div style="display: grid; justify-items: center;">
+                <span>{{localize "Is mystic?"}}</span>
+                <input type="checkbox" name="system.IsMystic" style="width: 20px; height: 20px; margin: 0;" {{#if item.system.IsMystic}}checked{{/if}}/>
+            </div>
         </div>
 
         <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="{{localize "Enter description here..."}}">{{item.system.Description}}</textarea>

@@ -24,9 +24,18 @@
         <span style="font-size: 20px;">{{localize "Player"}}</span>
         <input class="noBord" type="text" name="system.Other.PlayerName" value="{{actor.system.Other.PlayerName}}"/>
     </div>
+
+    <div style="display: grid; row-gap: 2px">
+        <div class="hkFlex" style="justify-items: center; width: min-content;">
+            <span style="font-size: 12px;">{{localize "Edit"}}:</span>
+            <input style="width: 13px; height: 13px; margin: 0;" type="checkbox" name="system.Other.Edit" {{#if actor.system.Other.Edit}}checked{{/if}} />
+        </div>
+
+        <input class="customRoll" type="button" value="{{localize "Roll"}}" style="font-size: 12px;">
+    </div>
 </div>
 
-<div class="" style="display: grid; grid-template-columns: min-content min-content min-content; column-gap: 12px;">
+<div style="display: grid; grid-template-columns: min-content min-content min-content; column-gap: 12px;">
     <div style="display: grid;  width: 200px;">
         <span style="font-size: 13px; text-wrap: nowrap;">{{localize "Character art"}}</span>
         <img src="{{actor.img}}" data-edit="img" height="200" width="200" style="object-fit: contain;"/>
@@ -35,25 +44,25 @@
     <div style="display: grid; width: min-content; min-width: 105px; row-gap: 7px;">
         <div class="attrBox">
             <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Might.value}}" data-mod="{{actor.system.Attr.Might.temporary}}">{{localize "Might"}}</span>
-            <input type="text" name="system.Attr.Might.value" title="" value="{{actor.system.Attr.Might.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" class="attrBox1" style="width: 35px;" {{#if actor.system.Other.Edit}}name="system.Attr.Might.base" value="{{actor.system.Attr.Might.base}}"{{else}}value="{{actor.system.Attr.Might.value}}" readonly{{/if}}/>
             <input type="text" name="system.Attr.Might.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Attr.Might.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
         </div>
     
         <div class="attrBox">
             <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Insight.value}}" data-mod="{{actor.system.Attr.Insight.temporary}}">{{localize "Insight"}}</span>
-            <input type="text" name="system.Attr.Insight.value" value="{{actor.system.Attr.Insight.value}}" class="attrBox1" style="width: 35px"/>
+            <input type="text" class="attrBox1" style="width: 35px" {{#if actor.system.Other.Edit}}name="system.Attr.Insight.base" value="{{actor.system.Attr.Insight.base}}"{{else}}value="{{actor.system.Attr.Insight.value}}" readonly{{/if}}/>
             <input type="text" name="system.Attr.Insight.temporary"  title="{{localize "Temporary"}}" value="{{actor.system.Attr.Insight.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
         </div>
     
         <div class="attrBox">
             <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Shell.value}}" data-mod="{{actor.system.Attr.Shell.temporary}}">{{localize "Shell"}}</span>
-            <input type="text" name="system.Attr.Shell.value" value="{{actor.system.Attr.Shell.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" class="attrBox1" style="width: 35px;" {{#if actor.system.Other.Edit}}name="system.Attr.Shell.base" value="{{actor.system.Attr.Shell.base}}"{{else}}value="{{actor.system.Attr.Shell.value}}" readonly{{/if}}/>
             <input type="text" name="system.Attr.Shell.temporary"  title="{{localize "Temporary"}}" value="{{actor.system.Attr.Shell.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
         </div>
     
         <div class="attrBox">
             <span class="attrBoxName rollable" data-ability="{{actor.system.Attr.Grace.value}}" data-mod="{{actor.system.Attr.Grace.temporary}}">{{localize "Grace"}}</span>
-            <input type="text" name="system.Attr.Grace.value" value="{{actor.system.Attr.Grace.value}}" class="attrBox1" style="width: 35px;"/>
+            <input type="text" class="attrBox1" style="width: 35px;" {{#if actor.system.Other.Edit}}name="system.Attr.Grace.base" value="{{actor.system.Attr.Grace.base}}"{{else}}value="{{actor.system.Attr.Grace.value}}" readonly{{/if}}/>
             <input type="text" name="system.Attr.Grace.temporary"  title="{{localize "Temporary"}}" value="{{actor.system.Attr.Grace.temporary}}" class="noTBord attrBox2" style="width: 35px;"/>
         </div>
     </div>
@@ -63,7 +72,7 @@
             <div style="display: grid;">
                 <span style="font-size: 20px; justify-self: center;">{{localize "Heart"}}</span>
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.Hearts.max" title="{{localize "Max"}}" value="{{actor.system.Pools.Hearts.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}name="system.Pools.Hearts.maxbase" value="{{actor.system.Pools.Hearts.maxbase}}"{{else}}value="{{actor.system.Pools.Hearts.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.Hearts.value" title="{{localize "Current"}}" value="{{actor.system.Pools.Hearts.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.Hearts.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.Hearts.temporary}}" style="width: 21px; height: 21px; margin-left: 5px;"/>
                 </div>
@@ -72,7 +81,7 @@
             <div style="display: grid;">
                 <span style="font-size: 20px; justify-self: center;">{{localize "Soul"}}</span>
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.Soul.max" title="{{localize "Max"}}" value="{{actor.system.Pools.Soul.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;"  {{#if actor.system.Other.Edit}}name="system.Pools.Soul.maxbase" value="{{actor.system.Pools.Soul.maxbase}}"{{else}}value="{{actor.system.Pools.Soul.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.Soul.value" title="{{localize "Current"}}" value="{{actor.system.Pools.Soul.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.Soul.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.Soul.temporary}}" style="width: 21px; height: 21px;  margin-left: 5px;"/>
                 </div>
@@ -81,34 +90,34 @@
             <div style="display: grid;">
                 <span style="font-size: 20px; justify-self: center;">{{localize "Stamina"}}</span>
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.Stamina.max" title="{{localize "Max"}}" value="{{actor.system.Pools.Stamina.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;"  {{#if actor.system.Other.Edit}}name="system.Pools.Stamina.maxbase" value="{{actor.system.Pools.Stamina.maxbase}}"{{else}}value="{{actor.system.Pools.Stamina.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.Stamina.value" title="{{localize "Current"}}" value="{{actor.system.Pools.Stamina.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.Stamina.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.Stamina.temporary}}" style="width: 21px; height: 21px;  margin-left: 5px;"/>
                 </div>
             </div>
 
             <div style="display: grid; row-gap: 4px;">
-                <input type="text" name="system.Pools.CustomPool1.name" value="{{actor.system.Pools.CustomPool1.name}}" class="noBord" placeholder="{{localize "Custom pool"}}" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <input type="text" name="system.Pools.CustomPool1.name" value="{{actor.system.Pools.CustomPool1.name}}" class="noBord" placeholder="{{localize "Custom pool"}} 1" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.CustomPool1.max" title="{{localize "Max"}}" value="{{actor.system.Pools.CustomPool1.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}name="system.Pools.CustomPool1.maxbase" value="{{actor.system.Pools.CustomPool1.maxbase}}"{{else}}value="{{actor.system.Pools.CustomPool1.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.CustomPool1.value" title="{{localize "Current"}}" value="{{actor.system.Pools.CustomPool1.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.CustomPool1.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.CustomPool1.temporary}}" style="width: 21px; height: 21px;  margin-left: 5px;"/>
                 </div>
             </div>
 
             <div style="display: grid; row-gap: 4px;">
-                <input type="text" name="system.Pools.CustomPool2.name" value="{{actor.system.Pools.CustomPool2.name}}" class="noBord" placeholder="{{localize "Custom pool"}}" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <input type="text" name="system.Pools.CustomPool2.name" value="{{actor.system.Pools.CustomPool2.name}}" class="noBord" placeholder="{{localize "Custom pool"}} 2" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.CustomPool2.max" title="{{localize "Max"}}" value="{{actor.system.Pools.CustomPool2.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text"  title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}name="system.Pools.CustomPool2.maxbase" value="{{actor.system.Pools.CustomPool2.maxbase}}"{{else}}value="{{actor.system.Pools.CustomPool2.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.CustomPool2.value" title="{{localize "Current"}}" value="{{actor.system.Pools.CustomPool2.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.CustomPool2.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.CustomPool2.temporary}}" style="width: 21px; height: 21px;  margin-left: 5px;"/>
                 </div>
             </div>
 
             <div style="display: grid; row-gap: 4px;">
-                <input type="text" name="system.Pools.CustomPool3.name" value="{{actor.system.Pools.CustomPool3.name}}" class="noBord" placeholder="{{localize "Custom pool"}}" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
+                <input type="text" name="system.Pools.CustomPool3.name" value="{{actor.system.Pools.CustomPool3.name}}" class="noBord" placeholder="{{localize "Custom pool"}} 3" style="width: 112px; justify-self: center; text-overflow: ellipsis;">
                 <div class="hkFlex" style="column-gap: 0px; justify-content: center;">
-                    <input class="noRBord" type="text" name="system.Pools.CustomPool3.max" title="{{localize "Max"}}" value="{{actor.system.Pools.CustomPool3.max}}" style="width: 28px; height: 28px;"/>
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}name="system.Pools.CustomPool3.maxbase" value="{{actor.system.Pools.CustomPool3.maxbase}}"{{else}}value="{{actor.system.Pools.CustomPool3.max}}" readonly{{/if}}/>
                     <input type="text" name="system.Pools.CustomPool3.value" title="{{localize "Current"}}" value="{{actor.system.Pools.CustomPool3.value}}" style="width: 42px; height: 42px;"/>
                     <input type="text" name="system.Pools.CustomPool3.temporary" title="{{localize "Temporary"}}" value="{{actor.system.Pools.CustomPool3.temporary}}" style="width: 21px; height: 21px;  margin-left: 5px;"/>
                 </div>
@@ -118,32 +127,32 @@
 
         <div class="hkFlex" style="column-gap: 14px; align-items: center; justify-content: space-evenly;">
             <div style="display: grid; justify-items: center;">
-                <span style="font-size: 13px;" class="rollable"  data-ability="{{actor.system.OtherAttr.Cute}}" data-mod="0">{{localize "Cute"}}</span>
-                <input type="text" name="system.OtherAttr.Spook" value="{{actor.system.OtherAttr.Spook}}" style="width: 35px;">
+                <span style="font-size: 13px;" class="rollable"  data-ability="{{actor.system.OtherAttr.Cute.value}}" data-mod="0">{{localize "Cute"}}</span>
+                <input type="text" style="width: 35px;" {{#if actor.system.Other.Edit}}name="system.OtherAttr.Cute.base" value="{{actor.system.OtherAttr.Cute.base}}"{{else}}value="{{actor.system.OtherAttr.Cute.value}}" readonly{{/if}}>
             </div>
 
             <div style="display: grid; justify-items: center;">
-                <span style="font-size: 13px;" class="rollable"  data-ability="{{actor.system.OtherAttr.Spook}}" data-mod="0">{{localize "Spook"}}</span>
-                <input type="text" name="system.OtherAttr.Cute" value="{{actor.system.OtherAttr.Cute}}" style="width: 35px;">
+                <span style="font-size: 13px;" class="rollable"  data-ability="{{actor.system.OtherAttr.Spook.value}}" data-mod="0">{{localize "Spook"}}</span>
+                <input type="text" style="width: 35px;" {{#if actor.system.Other.Edit}}name="system.OtherAttr.Spook.base" value="{{actor.system.OtherAttr.Spook.base}}"{{else}}value="{{actor.system.OtherAttr.Spook.value}}" readonly{{/if}}>
             </div>
 
             <div style="display: grid; justify-items: center;">
                 <span style="font-size: 17px; justify-self: center;">{{localize "Speed"}}</span>
                 <div class="hkFlex">
-                    <input class="noRBord" type="text" name="system.OtherAttr.Speed.max" title="{{localize "Max"}}" value="{{actor.system.OtherAttr.Speed.max}}" style="width: 28px; height: 28px;">
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}name="system.OtherAttr.Speed.maxbase" value="{{actor.system.OtherAttr.Speed.maxbase}}"{{else}}value="{{actor.system.OtherAttr.Speed.max}}" readonly{{/if}}>
                     <input type="text" name="system.OtherAttr.Speed.value" title="{{localize "Current"}}" value="{{actor.system.OtherAttr.Speed.value}}" style="width: 42px; height: 42px;">
                 </div>
             </div>
 
             <div style="display: grid; justify-items: center;">
                 <span style="font-size: 11px;">{{localize "Footwork"}}</span>
-                <input type="text" name="system.Attr.Footwork" value="{{actor.system.Attr.Footwork}}" style="width: 35px;">
+                <input type="text" style="width: 35px;" {{#if actor.system.Other.Edit}}value="{{actor.system.Attr.Footwork.base}}" readonly{{else}}value="{{actor.system.Attr.Footwork.value}}" readonly{{/if}}>
             </div>
 
             <div style="display: grid; justify-items: center;">
                 <span style="font-size: 17px; justify-self: center;">{{localize "Belly"}}</span>
                 <div class="hkFlex">
-                    <input class="noRBord" type="text" name="system.OtherAttr.Belly.max" title="{{localize "Max"}}" value="{{actor.system.OtherAttr.Belly.max}}" style="width: 28px; height: 28px;">
+                    <input class="noRBord" type="text" title="{{localize "Max"}}" style="width: 28px; height: 28px;" {{#if actor.system.Other.Edit}}value="{{actor.system.OtherAttr.Belly.maxbase}}" readonly{{else}}value="{{actor.system.OtherAttr.Belly.max}}" readonly{{/if}}>
                     <input type="text" name="system.OtherAttr.Belly.value" title="{{localize "Current"}}" value="{{actor.system.OtherAttr.Belly.value}}" style="width: 42px; height: 42px;">
                 </div>
             </div>

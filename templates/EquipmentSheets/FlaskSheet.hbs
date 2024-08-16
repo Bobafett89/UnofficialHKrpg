@@ -13,7 +13,7 @@
 
             <div style="display: grid; justify-items: center;">
                 <span>{{localize "Rejuvenating?"}}</span>
-                <input type="text" name="system.Rejuvenating" value="{{item.system.Rejuvenating}}" style="max-width: 40px;"/>
+                <input type="checkbox" name="system.Rejuvenating" style="max-width: 40px;" {{#if item.system.Rejuvenating}}checked{{/if}} />
             </div>
 
             <div style="display: grid; justify-items: center;">
@@ -30,8 +30,6 @@
                 <span>{{localize "Cost"}}</span>
                 <input type="text" name="system.Cost" value="{{item.system.Cost}}" style="max-width: 40px;"/>
             </div>
-
-            <input type="button" class="hkItemDelete" value="{{localize "Delete"}}" />
         </div>
 
         <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="{{localize "Enter description here..."}}">{{item.system.Description}}</textarea>

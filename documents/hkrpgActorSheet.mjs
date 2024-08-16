@@ -11,16 +11,82 @@ export class BugSheet extends ActorSheet {
     html.on('click', '.rollable', hkRoll.bind(this));
     html.on('click', '.hkOpenSheet', hkOpen.bind(this));
     html.on('click', '.hkUse', hkUseDialog.bind(this));
+    html.on('click', '.hkItemDelete', hkItemDeleteDialog.bind(this));
+    html.on('click', '.customRoll', customRollDialog.bind(this));
   }
+}
+
+async function customRollDialog(html) {
+  let actor = this.actor;
+  let dice = game.i18n.localize("Dice");
+  let d = new Dialog({
+    title: game.i18n.localize("Custom roll"),
+    content: `<span class='hkFlex' style='align-items: center; margin-bottom: 5px;'>${dice}:<input type='text' id='custRoll'/></span>`,
+    buttons: {
+      one: {
+        label: game.i18n.localize("Roll"),
+        callback: () => customRoll(actor)
+      }
+    }
+  });
+  d.render(true);
+}
+
+async function customRoll(actor) {
+  let attr = Number(document.getElementById("custRoll").value);
+  if(attr < 1 || isNaN(attr)) {
+    attr = 1;
+  }
+  let roll;
+  if(Number.isInteger(attr)) {
+    roll = new Roll(`${attr}d6cs>=5`);
+  } else {
+    attr = Math.floor(attr);
+    roll = new Roll(`${attr}d6r1<5cs>=5`);
+  }
+  await roll.evaluate();
+  roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: actor })});
+}
+
+async function hkItemDeleteDialog(html) {
+  let itemID = html.currentTarget.dataset.itemid;
+  let item = this.actor.items.get(itemID);
+  let name = item.name;
+  let di = game.i18n.localize("Delete item");
+  let d = new Dialog({
+    title: `${di}: ${name}`,
+    content: game.i18n.localize("Are you sure?"),
+    buttons: {
+      one: {
+        label: game.i18n.localize("Yes"),
+        callback: () => hkItemDelete(item)
+      },
+      two: {
+        label: game.i18n.localize("No")
+      }
+    }
+  });
+  d.render(true);
+}
+
+async function hkItemDelete(item) {
+  item.delete();
 }
 
 async function hkRoll(html) {
   let ability = html.currentTarget.dataset.ability;
   let mod = html.currentTarget.dataset.mod;
-  let roll = new Roll("(@abil)d6cs>=5", {abil: Number(ability)+Number(mod)});
+  let attr = Number(ability)+Number(mod);
+  let formula = ``;
+  if(Number.isInteger(attr)) {
+    formula = `${attr}d6cs>=5`;
+  } else {
+    attr = Math.floor(attr);
+    formula = `${attr}d6r1<5cs>=5`;
+  }
+  let roll = new Roll(formula);
   await roll.evaluate();
   roll.toMessage({speaker: ChatMessage.getSpeaker({ actor: this.actor })});
-  console.log(roll);
 }
 
 async function hkOpen(html) {
@@ -83,7 +149,7 @@ async function hkAttackRoll(item, ability, actor)
   let bonus = Math.floor(Number(document.getElementById("BonAtt").value));
   let quality = 0;
   if(item.type == "Shield") {
-  quality = item.system.BashQuality;
+    quality = item.system.BashQuality;
   }
   else {
     quality = item.system.Quality;
@@ -94,7 +160,14 @@ async function hkAttackRoll(item, ability, actor)
   if(isNaN(bonus)) {
     bonus = 0;
   }
-  let roll = new Roll("(@abil + @qual + @stam + @bon)d6cs>=5", {abil: Number(ability), qual: Number(quality), stam: Number(stamina), bon: Number(bonus)});
+  let formula;
+  if(Number.isInteger(ability)) {
+    formula = "d6cs>=5";
+  } else {
+    ability = Math.floor(ability);
+    formula = "d6r1<5cs>=5"
+  }
+  let roll = new Roll(`(${ability} + ${quality} + ${stamina} + ${bonus})${formula}`);
   await roll.evaluate();
   const suc = roll.total;
   let damage = 0;
@@ -149,11 +222,18 @@ async function hkParryRoll(item, ability, actor)
   if(isNaN(bonus)) {
     bonus = 0;
   }
+  let formula;
+  if(Number.isInteger(ability)) {
+    formula = "d6cs>=5";
+  } else {
+    ability = Math.floor(ability);
+    formula = "d6r1<5cs>=5"
+  }
   let roll;
   if(item.type === "Shield") {
-  roll = new Roll("(@abil + @qual + @stam + @bon)d6cs>=5", {abil: Number(ability), qual: Number(quality), stam: Number(stamina-1), bon: Number(bonus)});
+    roll = new Roll(`(${ability} + ${quality} + (${stamina}-1) + ${bonus})${formula}`);
   } else {
-    roll = new Roll("(@abil + @stam * 2 + @bon)d6cs>=5", {abil: Number(ability), stam: Number(stamina), bon: Number(bonus)});
+    roll = new Roll(`(${ability} + (${stamina} - 1) * 2 + ${bonus})${formula}`);
   }
   await roll.evaluate();
   let s = game.i18n.localize("Spent stamina");

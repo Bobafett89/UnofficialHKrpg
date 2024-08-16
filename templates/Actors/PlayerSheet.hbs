@@ -7,6 +7,7 @@
         <a data-tab="Biography" data-group="hkGroup">{{localize "Biography"}}</a>
         <a data-tab="Weapons" data-group="hkGroup">{{localize "Equipment"}}</a>
         <a data-tab="Skills" data-group="hkGroup" style="text-wrap: nowrap;">{{localize "Skills & Traits"}}</a>
+        <a data-tab="Special" data-group="hkGroup" style="text-wrap: nowrap;">{{localize "Special attributes"}}</a>
     </nav>
 
     <section class="hkContent">
@@ -16,6 +17,7 @@
                 <textarea class="desc" name="system.Other.Bio" placeholder="{{localize "Enter text here..."}}">{{actor.system.Other.Bio}}</textarea>
             </div>
         </div>
+
         <div class="tab" data-tab="Weapons" data-group="hkGroup">
             <div style="display: flex; justify-content: center; min-width: min-content;">
                 <div class="EquipmentTab">
@@ -23,10 +25,19 @@
                 </div>
             </div>
         </div>
+
         <div class="tab" data-tab="Skills" data-group="hkGroup">
             <div style="display: flex; justify-content: center; min-width: min-content;">
                 <div class="SkillsTab">
                     {{> "systems/hkrpg/templates/Actors/Parts/SkillsTab.hbs"}}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab" data-tab="Special" data-group="hkGroup">
+            <div style="display: flex; justify-content: center; min-width: min-content;">
+                <div class="specialTab">
+                    {{> "systems/hkrpg/templates/Actors/Parts/SpecialTab.hbs"}}
                 </div>
             </div>
         </div>

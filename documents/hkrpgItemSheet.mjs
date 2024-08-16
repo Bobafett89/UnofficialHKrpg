@@ -1,39 +1,22 @@
 class hkItemSheet extends ItemSheet {
-  
   activateListeners(html) {
-    super.activateListeners(html);
-    html.on('click', '.hkItemDelete', hkItemDeleteDialog.bind(this))
+    super.activateListeners(html);;
+    html.on('click', '.hkOpenEffect', OpenEffect.bind(this));
   }
 }
 
-async function hkItemDeleteDialog() {
-  let name = this.item.name;
-  let di = game.i18n.localize("Delete item");
-  let d = new Dialog({
-    title: `${di}: ${name}`,
-    content: game.i18n.localize("Are you sure?"),
-    buttons: {
-      one: {
-        label: game.i18n.localize("Yes"),
-        callback: () => hkItemDelete(this.item)
-      },
-      two: {
-        label: game.i18n.localize("No")
-      }
-    }
-  });
-  d.render(true);
-}
-
-async function hkItemDelete(item) {
-  item.delete();
+async function OpenEffect(html) {
+  let effectID = html.currentTarget.dataset.effectid;
+  let effect = this.item.effects.get(effectID);
+  effect.sheet.render(true);
 }
 
 export class WeaponSheet extends hkItemSheet {
 
     static get defaultOptions() {
       return foundry.utils.mergeObject(super.defaultOptions, {
-        template: "systems/hkrpg/templates/EquipmentSheets/WeaponSheet.hbs"
+        template: "systems/hkrpg/templates/EquipmentSheets/WeaponSheet.hbs",
+        width: 573
       });
     }
 }
@@ -42,7 +25,8 @@ export class ShieldSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: "systems/hkrpg/templates/EquipmentSheets/ShieldSheet.hbs"
+      template: "systems/hkrpg/templates/EquipmentSheets/ShieldSheet.hbs",
+      width: 578
     });
   }
 }
@@ -69,7 +53,8 @@ export class FoodSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: "systems/hkrpg/templates/EquipmentSheets/FoodSheet.hbs"
+      template: "systems/hkrpg/templates/EquipmentSheets/FoodSheet.hbs",
+      width: 626
     });
   }
 }
@@ -114,7 +99,8 @@ export class ToolSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: "systems/hkrpg/templates/EquipmentSheets/ToolSheet.hbs"
+      template: "systems/hkrpg/templates/EquipmentSheets/ToolSheet.hbs",
+      width: 552
     });
   }
 }
@@ -124,6 +110,17 @@ export class OtherSheet extends hkItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: "systems/hkrpg/templates/EquipmentSheets/OtherSheet.hbs"
+    });
+  }
+}
+
+export class BeltItemSheet extends OtherSheet {}
+
+export class AttrBonusSheet extends hkItemSheet {
+
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      template: "systems/hkrpg/templates/Effects/AttrBonusSheet.hbs"
     });
   }
 }
@@ -150,7 +147,8 @@ export class ProfSheet extends hkItemSheet {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: "systems/hkrpg/templates/SkillsSheets/ProfSheet.hbs"
+      template: "systems/hkrpg/templates/SkillsSheets/ProfSheet.hbs",
+      width: 716
     });
   }
 }

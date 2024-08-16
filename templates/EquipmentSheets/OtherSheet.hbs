@@ -22,7 +22,7 @@
                 <input type="text" name="system.Cost" value="{{item.system.Cost}}" style="max-width: 40px;"/>
             </div>
 
-            <input type="button" class="hkItemDelete" value="{{localize "Delete"}}" />
+            <input type="button" class="hkOpenEffect" data-effectid="{{item.effects.contents.[1].id}}" value="{{localize "Edit effect"}}" />
         </div>
 
         <textarea class="desc" name="system.Description" value="{{item.system.Description}}" placeholder="{{localize "Enter description here..."}}">{{item.system.Description}}</textarea>

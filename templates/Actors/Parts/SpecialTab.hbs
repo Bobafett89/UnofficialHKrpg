@@ -1,0 +1,36 @@
+<div class="specialLeftList">
+    <span>{{localize "Initiative bonus"}}:</span>
+    <input type="text" style="width: 40px;" {{#if actor.system.Other.Edit}}name="system.Special.InitiativeBonus.base" value="{{actor.system.Special.InitiativeBonus.base}}"{{else}}value="{{actor.system.Special.InitiativeBonus.value}}" readonly{{/if}}/>
+
+    <span>{{localize "Starting hunger"}}:</span>
+    <input type="text" style="width: 40px;" name="system.Special.Hunger.start" value="{{actor.system.Special.Hunger.start}}"/>
+
+    <span>{{localize "Current hunger"}}:</span>
+    <input type="text" style="width: 40px;" value="{{actor.system.Special.Hunger.value}}" readonly/>
+
+    <span>{{localize "Max hunger"}}:</span>
+    <input type="text" style="width: 40px;"  name="system.Special.Hunger.max" value="{{actor.system.Special.Hunger.max}}"/>
+
+    <span>{{localize "Min belly"}}:</span>
+    <input type="text" style="width: 40px;"  name="system.OtherAttr.Belly.min" value="{{actor.system.OtherAttr.Belly.min}}"/>
+
+    <span>{{localize "Mystic path ranks"}}:</span>
+    <input type="text" style="width: 40px;" value="{{actor.system.Special.PathRanks.MysticRanks}}" readonly/>
+
+    <span>{{localize "Martial path ranks"}}:</span>
+    <input type="text" style="width: 40px;" value="{{actor.system.Special.PathRanks.MartialRanks}}" readonly/>
+
+    <span>{{localize "Total path ranks"}}:</span>
+    <input type="text" style="width: 40px;" value="{{actor.system.Special.PathRanks.TotalRanks}}" readonly/>
+</div>
+
+<div class="specialRightList">
+    <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "TYPES.Item.AttrBonus"}}</span>
+
+    {{#each actor.itemTypes.AttrBonus as |item|}}
+    <span class="ItemListItem hkOpenSheet" style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+    {{#if actor.system.Other.Edit}}
+    <span class="hkItemDelete ItemListItem" style="grid-column: 2/3; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+    {{/if}}
+    {{/each}}
+</div>

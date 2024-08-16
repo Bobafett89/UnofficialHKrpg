@@ -1,0 +1,61 @@
+<form>
+    <header style="display: flex; justify-content: center;">
+        <div style="display: grid; grid-template-columns: repeat(5, min-content); justify-items: center; column-gap: 15px; row-gap: 10px;">
+            <span style="grid-column: 1/2;">{{localize "Attribute"}}</span>
+            <span style="grid-column: 2/3;">{{localize "Mode"}}</span>
+            <span style="grid-column: 3/4;">{{localize "Value"}}</span>
+            <span style="grid-column: 4/5;">{{localize "Priority"}}</span>
+
+            {{#each effect.changes as |change id|}}
+            <select name="changes.[{{id}}].key" style="grid-column: 1/2;">
+                <optgroup label="{{localize "Pools"}}">
+                    <option value="{{../effect.system.PoolsKeys.Hearts}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.Hearts change.key)}}selected{{/if}}>{{localize "Heart"}}</option>
+                    <option value="{{../effect.system.PoolsKeys.Soul}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.Soul change.key)}}selected{{/if}}>{{localize "Soul"}}</option>
+                    <option value="{{../effect.system.PoolsKeys.Stamina}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.Stamina change.key)}}selected{{/if}}>{{localize "Stamina"}}</option>
+                    <option value="{{../effect.system.PoolsKeys.CustomPool1}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.CustomPool1 change.key)}}selected{{/if}}>{{localize "Custom pool"}} 1</option>
+                    <option value="{{../effect.system.PoolsKeys.CustomPool2}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.CustomPool2 change.key)}}selected{{/if}}>{{localize "Custom pool"}} 2</option>
+                    <option value="{{../effect.system.PoolsKeys.CustomPool3}}" {{#if (EqualityCheck ../effect.system.PoolsKeys.CustomPool3 change.key)}}selected{{/if}}>{{localize "Custom pool"}} 3</option>
+                </optgroup>
+
+                <optgroup label="{{localize "Attributes"}}">
+                    <option value="{{../effect.system.AttrKeys.Might}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Might change.key)}}selected{{/if}}>{{localize "Might"}}</option>
+                    <option value="{{../effect.system.AttrKeys.Insight}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Insight change.key)}}selected{{/if}}>{{localize "Insight"}}</option>
+                    <option value="{{../effect.system.AttrKeys.Shell}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Shell change.key)}}selected{{/if}}>{{localize "Shell"}}</option>
+                    <option value="{{../effect.system.AttrKeys.Grace}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Grace change.key)}}selected{{/if}}>{{localize "Grace"}}</option>
+                    <option value="{{../effect.system.AttrKeys.Footwork}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Footwork change.key)}}selected{{/if}}>{{localize "Footwork"}}</option>
+                    <option value="{{../effect.system.AttrKeys.Load}}" {{#if (EqualityCheck ../effect.system.AttrKeys.Load change.key)}}selected{{/if}}>{{localize "Load"}}</option>
+                    <option value="{{../effect.system.AttrKeys.BeltSize}}" {{#if (EqualityCheck ../effect.system.AttrKeys.BeltSize change.key)}}selected{{/if}}>{{localize "Belt size"}}</option>
+                    <option value="{{../effect.system.AttrKeys.TechSlots}}" {{#if (EqualityCheck ../effect.system.AttrKeys.TechSlots change.key)}}selected{{/if}}>{{localize "Technique slots"}}</option>
+                </optgroup>
+
+                <optgroup label="{{localize "Other attributes"}}">
+                    <option value="{{../effect.system.OtherAttrKeys.Cute}}" {{#if (EqualityCheck ../effect.system.OtherAttrKeys.Cute change.key)}}selected{{/if}}>{{localize "Cute"}}</option>
+                    <option value="{{../effect.system.OtherAttrKeys.Spook}}" {{#if (EqualityCheck ../effect.system.OtherAttrKeys.Spook change.key)}}selected{{/if}}>{{localize "Spook"}}</option>
+                    <option value="{{../effect.system.OtherAttrKeys.Notches}}" {{#if (EqualityCheck ../effect.system.OtherAttrKeys.Notches change.key)}}selected{{/if}}>{{localize "Notches"}}</option>
+                    <option value="{{../effect.system.OtherAttrKeys.Speed}}" {{#if (EqualityCheck ../effect.system.OtherAttrKeys.Speed change.key)}}selected{{/if}}>{{localize "Speed"}}</option>
+                    <option value="{{../effect.system.OtherAttrKeys.Belly}}" {{#if (EqualityCheck ../effect.system.OtherAttrKeys.Belly change.key)}}selected{{/if}}>{{localize "Belly"}}</option>
+                </optgroup>
+
+                <optgroup label="{{localize "Special attributes"}}">
+                    <option value="{{../effect.system.SpecialKeys.InitiativeBonus}}" {{#if (EqualityCheck ../effect.system.SpecialKeys.InitiativeBonus change.key)}}selected{{/if}}>{{localize "Initiative bonus"}}</option>
+                </optgroup>
+            </select>
+
+            <select name="changes.[{{id}}].mode" style="grid-column: 2/3;">
+                <option value="1" {{#if (EqualityCheck 1 change.mode)}}selected{{/if}}>{{localize "Multiply"}}</option>
+                <option value="2" {{#if (EqualityCheck 2 change.mode)}}selected{{/if}}>{{localize "Add"}}</option>
+                <option value="3" {{#if (EqualityCheck 3 change.mode)}}selected{{/if}}>{{localize "Downgrade"}}</option>
+                <option value="4" {{#if (EqualityCheck 4 change.mode)}}selected{{/if}}>{{localize "Upgrade"}}</option>
+                <option value="5" {{#if (EqualityCheck 5 change.mode)}}selected{{/if}}>{{localize "Override"}}</option>
+            </select>
+
+            <input type="text" name="changes.[{{id}}].value" value="{{change.value}}" style="width: 50px; height: 27px; grid-column: 3/4;"/>
+
+            <input type="text" name="changes.[{{id}}].priority" value="{{change.priority}}" style="width: 50px; height: 27px; grid-column: 4/5;"/>
+
+            <div class="hkItemDelete" data-changeid="{{id}}" style="grid-column: 5/6;"><i class="fa-solid fa-trash"></i></div>
+            {{/each}}
+            <input class="hkAddEffect" type="button" value="{{localize "Add effect"}}" style="grid-column: 1/6; width: 100%;"/>
+        </div>
+    </header>
+</form>

@@ -14,6 +14,9 @@
             <span class="ItemListItem ItemListBorder" style="grid-column: 4 / 5;">{{item.system.Range}}</span>
             <span class="ItemListItem ItemListBorder" style="grid-column: 5 / 6;">{{item.system.Bulk}}</span>
             <span class="hkUse ItemListItem ItemListBorder" style="grid-column: 6 / 7;" data-itemid="{{item.id}}"><i class="fa-solid fa-swords"></i></span>
+            {{#if actor.system.Other.Edit}}
+            <span class="hkItemDelete ItemListItem" style="grid-column: 7 / 8; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+            {{/if}}
             {{/each}}
 
             {{#each actor.itemTypes.ArcaneFoci as |item|}}
@@ -23,6 +26,9 @@
             <span class="ItemListItem ItemListBorder" style="grid-column: 4 / 5;">{{item.system.Range}}</span>
             <span class="ItemListItem ItemListBorder" style="grid-column: 5 / 6;">{{item.system.Bulk}}</span>
             <span class="hkUse ItemListItem ItemListBorder" style="grid-column: 6 / 7;" data-itemid="{{item.id}}"><i class="fa-solid fa-staff"></i></span>
+            {{#if actor.system.Other.Edit}}
+            <span class="hkItemDelete ItemListItem" style="grid-column: 7 / 8; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+            {{/if}}
             {{/each}}
 
             {{#each actor.itemTypes.Shield as |item|}}
@@ -32,6 +38,9 @@
             <span class="ItemListItem ItemListBorder" style="grid-column: 4 / 5;">{{item.system.Range}}</span>
             <span class="ItemListItem ItemListBorder" style="grid-column: 5 / 6;">{{item.system.Bulk}}</span>
             <span class="hkUse ItemListItem ItemListBorder" style="grid-column: 6 / 7;" data-itemid="{{item.id}}"><i class="fa-solid fa-shield-quartered"></i></span>
+            {{#if actor.system.Other.Edit}}
+            <span class="hkItemDelete ItemListItem" style="grid-column: 7 / 8; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+            {{/if}}
             {{/each}}
         </div>
 
@@ -46,6 +55,9 @@
             <span class="ItemListItem ItemListBorder" style="grid-column: 2/3;">{{item.system.DamageReduction}}</span>
             <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{item.system.Durability.value}}/{{item.system.Durability.max}}</span>
             <span class="ItemListItem ItemListBorder" style="grid-column: 4/5;">{{item.system.Bulk}}</span>
+            {{#if actor.system.Other.Edit}}
+            <span class="hkItemDelete ItemListItem" style="grid-column: 5 / 6; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+            {{/if}}
             {{/each}}
         </div>
 </div>
@@ -53,61 +65,94 @@
 <div id="RightSideOfEquipmentTab" style="grid-area: b; display: grid; row-gap: 15px; grid-auto-rows: min-content;">
     <div class="EquipmentList">
         <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "Equipment"}}</span>
-        <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Belt"}}: <input type="text" name="system.Attr.BeltSize" value="{{actor.system.Attr.BeltSize}}" style="height: 15px; width: 20px;"></span>
+        <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Belt"}}: <input type="text" style="height: 15px; width: 20px;" {{#if actor.system.Other.Edit}}value="{{actor.system.Attr.BeltSize.base}}" readonly{{else}}value="{{actor.system.Attr.BeltSize.value}}" readonly{{/if}}></span>
         <span class="ItemListItem ItemListHeader" style="grid-column: 3/4; font-size: 11px;">{{localize "Bulk"}}</span>
 
         {{#each actor.itemTypes.Food as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Potion as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Flask as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Poison as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Trap as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Tool as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
+        {{/each}}
+
+        {{#each actor.itemTypes.BeltItem as |item|}}
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
 
         {{#each actor.itemTypes.Other as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Bulk}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1 / 2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2 / 3;">{{#if item.system.Belt}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3 / 4;">{{item.system.Bulk}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4 / 5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
     </div>
 
     <div class="CharmList">
         <span class="ItemListItem ItemListHeader" style="grid-column: 1/2; font-size: 17px;">{{localize "Charms"}}</span>
         <span class="ItemListItem ItemListHeader" style="grid-column: 2/3; font-size: 11px;">{{localize "Attuned"}}</span>
-        <span class="ItemListItem ItemListHeader" style="grid-column: 3/4; font-size: 11px;">{{localize "Notches"}}: <input type="text" name="system.OtherAttr.Notches" value="{{actor.system.OtherAttr.Notches}}" style="height: 15px; width: 20px;"></span>
+        <span class="ItemListItem ItemListHeader" style="grid-column: 3/4; font-size: 11px;">{{localize "Notches"}}: <input type="text" style="height: 15px; width: 20px;" {{#if actor.system.Other.Edit}}name="system.OtherAttr.Notches.base" value="{{actor.system.OtherAttr.Notches.base}}"{{else}}value="{{actor.system.OtherAttr.Notches.value}}" readonly{{/if}}></span>
 
         {{#each actor.itemTypes.Charm as |item|}}
-        <span class="ItemListItem hkOpenSheet" data-itemid="{{item.id}}">{{item.name}}</span>
-        <span class="ItemListItem ItemListBorder">{{#if item.system.Attuned}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
-        <span class="ItemListItem ItemListBorder">{{item.system.Notches}}</span>
+        <span class="ItemListItem hkOpenSheet" style="grid-column: 1/2;" data-itemid="{{item.id}}">{{item.name}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 2/3;">{{#if item.system.Attuned}}<i class="fa-solid fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}</span>
+        <span class="ItemListItem ItemListBorder" style="grid-column: 3/4;">{{item.system.Notches}}</span>
+        {{#if actor.system.Other.Edit}}
+        <span class="hkItemDelete ItemListItem" style="grid-column: 4/5; border: 0;" data-itemid="{{item.id}}"><i class="fa-solid fa-trash"></i></span>
+        {{/if}}
         {{/each}}
     </div>
 </div>
@@ -120,11 +165,11 @@
 
     <div class="hkFlex" style="align-items: center; column-gap: 5px;">
         <span>{{localize "Total bulk"}}:</span>
-        <input type="text" name="system.Other.Bulk" value="{{actor.system.Other.Bulk}}" style="width: 26px;"/>
+        <input type="text" value="{{actor.system.Other.Bulk}}" readonly style="width: 26px;"/>
         <span>{{localize "out of"}}</span>
         <div style="display: grid; margin-bottom: 18px; justify-items: center;">
             <span>{{localize "Load"}}</span>
-            <input type="text" name="system.Attr.Load" value="{{actor.system.Attr.Load}}" style="width: 26px;"/>
+            <input type="text" style="width: 26px;" {{#if actor.system.Other.Edit}}value="{{actor.system.Attr.Load.base}}" readonly{{else}}value="{{actor.system.Attr.Load.value}}" readonly{{/if}}/>
         </div>
     </div>
 </div>
